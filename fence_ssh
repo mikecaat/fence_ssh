@@ -183,6 +183,7 @@ then
   do
     raw_input+="${line} "
   done
+  echo `date`, $raw_input >> /root/fence_ssh.log
   # Suffix args with double dash so it can be parsed by the case statement below
   args=$(echo $raw_input | awk '{ $0="--"$0; gsub(/ /, " --", $0); gsub(/=/, " ", $0); print $0 }')
   ocf_log debug "${__SCRIPT_NAME}: ARGS ARE $args"
